@@ -1,0 +1,33 @@
+{
+  "name": "yeoman-doctor",
+  "version": "0.0.0",
+  "description": "Script to detect potential issues who'd break Yeoman on a user machine",
+  "license": "BSD",
+  "main": "doctor.js",
+  "bin": {
+    "yodoctor": "cli.js"
+  },
+  "author": "The Yeoman Team",
+  "repository": "yeoman/doctor",
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=1.4.3"
+  },
+  "scripts": {
+    "test": "jshint doctor.js"
+  },
+  "files": [
+    "doctor.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "yeoman"
+  ],
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "shelljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.6"
+  }
+}
