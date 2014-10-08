@@ -1,16 +1,18 @@
 # Yeoman Doctor [![Build Status](https://travis-ci.org/yeoman/doctor.svg?branch=master)](https://travis-ci.org/yeoman/doctor)
 
+> Detect potential issues with users system that could prevent Yeoman from working correctly
 
 
 ## Usage
 
-Use as part of yo
+Use as part of [yo](https://github.com/yeoman/yo):
 
-```
-yo doctor
+```sh
+$ yo doctor
 ```
 
-If installed globally on your machine, you can also call `yodoctor`
+If installed globally, you can also call `yodoctor`.
+
 
 ## License
 
