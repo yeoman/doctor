@@ -1,6 +1,6 @@
 {
   "name": "yeoman-doctor",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Script to detect potential issues who'd break Yeoman on a user machine",
   "license": "BSD",
   "main": "doctor.js",
