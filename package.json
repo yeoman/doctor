@@ -26,7 +26,8 @@
   ],
   "dependencies": {
     "chalk": "^0.5.1",
-    "shelljs": "^0.3.0"
+    "shelljs": "^0.3.0",
+    "user-home": "^1.1.0"
   },
   "devDependencies": {
     "jshint": "^2.5.6"

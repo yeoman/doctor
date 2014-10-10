@@ -1,14 +1,17 @@
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 var chalk = require('chalk');
 var shell = require('shelljs');
+var userHome = require('user-home');
 
 var doctor = module.exports = {
   errors: [],
 
   run: function () {
     this.checkNodePath();
+    this.checkGlobalConfig();
     this.logErrors();
   },
 
@@ -71,5 +74,28 @@ var doctor = module.exports = {
     }
 
     this.errors.push(output);
+  },
+
+  checkGlobalConfig: function() {
+    var configPath = path.join(userHome, '.yo-rc-global.json');
+
+    if (!fs.existsSync(configPath)) {
+      return;
+    }
+
+    try {
+      JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    } catch (err) {
+      if (err instanceof SyntaxError) {
+        var output = [
+          'Your global config file is not a valid JSON.',
+          'It contains the following syntax error: ' + err.message,
+          'Please open \'' + configPath + '\' and fix it manually.'
+        ].join('\n');
+        this.errors.push(output);
+      } else {
+        this.errors.push(err.message);
+      }
+    }
   }
 };
