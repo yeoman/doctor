@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 'use strict';
 
-require('./doctor').run();
+require('./index.js').run();
