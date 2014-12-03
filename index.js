@@ -35,7 +35,7 @@ var doctor = module.exports = {
     }
 
     var nodePaths = process.env.NODE_PATH.split(path.delimiter).map(path.normalize);
-    var npmRoot = shell.exec('npm -g root', { silent: true }).output;
+    var npmRoot = shell.exec('npm -g root --silent', { silent: true }).output;
 
     npmRoot = path.normalize(npmRoot.trim());
 
