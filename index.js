@@ -35,7 +35,16 @@ var doctor = module.exports = {
     }
 
     var nodePaths = process.env.NODE_PATH.split(path.delimiter).map(path.normalize);
-    var npmRoot = shell.exec('npm -g root --silent', { silent: true }).output;
+    var npmCmd = shell.exec('npm -g root --silent', { silent: true });
+    var exitcode = npmCmd.code;
+
+    if (exitcode !== 0) {
+        console.log(chalk.red('[Yeoman Doctor] Impossible to find the npm root, something went wrong.'));
+        console.log(chalk.cyan('Try to execute ') + chalk.green('npm -g root --silent') + chalk.cyan(' on your command line'));
+        process.exit(exitcode);
+    }
+
+    var npmRoot = npmCmd.output;
 
     npmRoot = path.normalize(npmRoot.trim());
 
