@@ -1,6 +1,7 @@
 'use strict';
 
 var assert = require('assert');
+var path = require('path');
 var sinon = require('sinon');
 var shell = require('shelljs');
 var rule = require('../lib/rules/node_path');
@@ -50,6 +51,6 @@ describe('NODE_PATH rule', function () {
     process.env.NODE_PATH = 'node-fake-path/bar';
 
     var output = rule.verify();
-    assert.equal(output, rule.errors.pathMismatch('node-fake-path/foo'));
+    assert.equal(output, rule.errors.pathMismatch(path.resolve('node-fake-path/foo')));
   });
 });
