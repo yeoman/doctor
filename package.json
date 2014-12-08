@@ -10,14 +10,13 @@
     "npm": ">=1.4.3"
   },
   "bin": {
-    "yodoctor": "cli.js"
+    "yodoctor": "lib/cli.js"
   },
   "scripts": {
     "test": "jshint index.js"
   },
   "files": [
-    "index.js",
-    "cli.js"
+    "lib"
   ],
   "keywords": [
     "yeoman",
@@ -30,6 +29,7 @@
     "user-home": "^1.1.0"
   },
   "devDependencies": {
-    "jshint": "^2.5.6"
+    "jshint": "^2.5.6",
+    "mocha": "^2.0.1"
   }
 }
