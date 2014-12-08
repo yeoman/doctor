@@ -13,5 +13,11 @@
   "strict": false,
   "indent": 2,
   "quotmark": "single",
-  "laxbreak": true
+  "laxbreak": true,
+  "globals": {
+    "describe": true,
+    "it": true,
+    "beforeEach": true,
+    "afterEach": true
+  }
 }

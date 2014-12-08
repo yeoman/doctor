@@ -13,7 +13,7 @@
     "yodoctor": "lib/cli.js"
   },
   "scripts": {
-    "test": "jshint index.js"
+    "test": "jshint **/*.js && mocha test/** -R spec"
   },
   "files": [
     "lib"
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "jshint": "^2.5.6",
-    "mocha": "^2.0.1"
+    "mocha": "^2.0.1",
+    "sinon": "^1.12.1"
   }
 }
