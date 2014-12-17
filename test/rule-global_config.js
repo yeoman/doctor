@@ -14,7 +14,6 @@ var messageMiscFile = fs.readFileSync(messageMiscPath, 'utf8');
 
 describe('global config rule', function () {
   beforeEach(function () {
-    global.fs = require('fs');
     this.sandbox = sinon.sandbox.create();
   });
 
