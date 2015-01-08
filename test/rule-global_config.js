@@ -1,9 +1,8 @@
 'use strict';
-
 var assert = require('assert');
-var sinon = require('sinon');
 var fs = require('fs');
 var path = require('path');
+var sinon = require('sinon');
 var rule = require('../lib/rules/global_config');
 
 // Setting the message paths & files before fs is stubbed
@@ -51,5 +50,4 @@ describe('global config rule', function () {
 
     assert.equal(rule.verify(), rule.errors.misc(rule.configPath));
   });
-
 });

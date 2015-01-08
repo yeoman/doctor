@@ -6,8 +6,7 @@
   "author": "Yeoman team",
   "repository": "yeoman/doctor",
   "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=1.4.3"
+    "node": ">=0.10.0"
   },
   "bin": {
     "yodoctor": "lib/cli.js"

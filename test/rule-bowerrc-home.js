@@ -1,8 +1,7 @@
 'use strict';
-
+var fs = require('fs');
 var assert = require('assert');
 var sinon = require('sinon');
-var fs = require('fs');
 var rule = require('../lib/rules/bowerrc-home');
 
 describe('global .bowerrc rule', function () {
