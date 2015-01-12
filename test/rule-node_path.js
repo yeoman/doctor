@@ -2,7 +2,7 @@
 var assert = require('assert');
 var path = require('path');
 var sinon = require('sinon');
-var shell = require('shelljs');
+var child_process = require('child_process');
 var rule = require('../lib/rules/node_path');
 
 describe('NODE_PATH rule', function () {
@@ -16,40 +16,42 @@ describe('NODE_PATH rule', function () {
     process.env.NODE_PATH = this.beforePath;
   });
 
-  it('pass if npm root is contained in NODE_PATH', function () {
-    this.sandbox.stub(shell, 'exec').returns({
-      code: 0,
-
-      // Make sure we clean the output
-      output: '  node-fake-path/foo\n'
-    });
+  it('pass if npm root is contained in NODE_PATH', function (done) {
+    this.sandbox.stub(child_process, 'exec').yields(null, '  node-fake-path/foo\n');
 
     process.env.NODE_PATH = 'node-fake-path/foo';
-    assert(!rule.verify());
-  });
-
-  it('pass if NODE_PATH is undefined', function () {
-    delete process.env.NODE_PATH;
-    assert(!rule.verify());
-  });
-
-  it('fail if the npm call throw', function () {
-    process.env.NODE_PATH = 'some-path';
-    this.sandbox.stub(shell, 'exec').returns({ code: 1 });
-
-    var output = rule.verify();
-    assert.equal(output, rule.errors.npmFailure());
-  });
-
-  it('fail if the paths mismatch', function () {
-    this.sandbox.stub(shell, 'exec').returns({
-      code: 0,
-      output: 'node-fake-path/foo'
+    rule.verify(function (error) {
+      assert(!error);
+      done();
     });
+  });
+
+  it('pass if NODE_PATH is undefined', function (done) {
+    delete process.env.NODE_PATH;
+    rule.verify(function (error) {
+      assert(!error);
+      done();
+    });
+  });
+
+  it('fail if the npm call throw', function (done) {
+    process.env.NODE_PATH = 'some-path';
+    this.sandbox.stub(child_process, 'exec').yields(new Error());
+
+    rule.verify(function (error) {
+      assert.equal(error, rule.errors.npmFailure());
+      done();
+    });
+  });
+
+  it('fail if the paths mismatch', function (done) {
+    this.sandbox.stub(child_process, 'exec').yields(null, 'node-fake-path/foo');
 
     process.env.NODE_PATH = 'node-fake-path/bar';
 
-    var output = rule.verify();
-    assert.equal(output, rule.errors.pathMismatch(path.resolve('node-fake-path/foo')));
+    rule.verify(function (error) {
+      assert.equal(error, rule.errors.pathMismatch(path.resolve('node-fake-path/foo')));
+      done();
+    });
   });
 });

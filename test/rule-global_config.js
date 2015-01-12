@@ -20,34 +20,46 @@ describe('global config rule', function () {
     this.sandbox.restore();
   });
 
-  it('pass if there is no global config', function () {
+  it('pass if there is no global config', function (done) {
     this.sandbox.stub(fs, 'existsSync').returns(false);
-    assert(!rule.verify());
+    rule.verify(function (error) {
+      assert(!error);
+      done();
+    });
   });
 
-  it('pass if the config content is valid JSON', function () {
+  it('pass if the config content is valid JSON', function (done) {
     this.sandbox.stub(fs, 'existsSync').returns(true);
     this.sandbox.stub(fs, 'readFileSync').returns('{ "foo": 1 }');
-    assert(!rule.verify());
+    rule.verify(function (error) {
+      assert(!error);
+      done();
+    });
   });
 
-  it('fails if JSON is invalid', function () {
+  it('fails if JSON is invalid', function (done) {
     this.sandbox.stub(fs, 'existsSync').withArgs(rule.configPath).returns(true);
 
     var fsStub = this.sandbox.stub(fs, 'readFileSync');
     fsStub.withArgs(rule.configPath).returns('@#');
     fsStub.withArgs(messageSyntaxPath).returns(messageSyntaxFile);
 
-    assert.equal(rule.verify(), rule.errors.syntax(new SyntaxError('Unexpected token @'), rule.configPath));
+    rule.verify(function (error) {
+      assert.equal(error, rule.errors.syntax(new SyntaxError('Unexpected token @'), rule.configPath));
+      done();
+    });
   });
 
-  it('fails if file is unreadable', function () {
+  it('fails if file is unreadable', function (done) {
     this.sandbox.stub(fs, 'existsSync').withArgs(rule.configPath).returns(true);
 
     var fsStub = this.sandbox.stub(fs, 'readFileSync');
     fsStub.withArgs(rule.configPath).throws(new Error('nope'));
     fsStub.withArgs(messageMiscPath).returns(messageMiscFile);
 
-    assert.equal(rule.verify(), rule.errors.misc(rule.configPath));
+    rule.verify(function (error) {
+      assert.equal(error, rule.errors.misc(rule.configPath));
+      done();
+    });
   });
 });
