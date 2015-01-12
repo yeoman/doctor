@@ -1,6 +1,7 @@
 {
   "name": "yeoman-doctor",
   "version": "1.2.0",
+  "main": "lib/index.js",
   "description": "Detect potential issues with users system that could prevent Yeoman from working correctly",
   "license": "BSD",
   "author": "Yeoman team",
