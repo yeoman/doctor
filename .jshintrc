@@ -11,13 +11,6 @@
   "noarg": true,
   "undef": true,
   "strict": false,
-  "indent": 2,
-  "quotmark": "single",
   "laxbreak": true,
-  "globals": {
-    "describe": true,
-    "it": true,
-    "beforeEach": true,
-    "afterEach": true
-  }
+  "mocha": true
 }

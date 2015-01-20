@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "description": "Detect potential issues with users system that could prevent Yeoman from working correctly",
   "license": "BSD",
-  "author": "Yeoman team",
+  "author": "Yeoman",
   "repository": "yeoman/doctor",
   "engines": {
     "node": ">=0.10.0"
@@ -21,14 +21,17 @@
   "keywords": [
     "yeoman",
     "yo",
-    "doctor"
+    "doctor",
+    "system",
+    "health",
+    "report",
+    "check"
   ],
   "dependencies": {
-    "async": "^0.9.0",
     "chalk": "^0.5.1",
+    "each-async": "^1.1.1",
     "log-symbols": "^1.0.1",
     "object-values": "^1.0.0",
-    "require-dir": "^0.1.0",
     "twig": "^0.7.2",
     "user-home": "^1.1.0"
   },
