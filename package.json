@@ -3,14 +3,12 @@
   "version": "1.3.2",
   "main": "lib/index.js",
   "description": "Detect potential issues with users system that could prevent Yeoman from working correctly",
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "author": "Yeoman",
   "repository": "yeoman/doctor",
+  "bin": "lib/cli.js",
   "engines": {
     "node": ">=0.10.0"
-  },
-  "bin": {
-    "yodoctor": "lib/cli.js"
   },
   "scripts": {
     "test": "jshint **/*.js && mocha test/** -R spec"
@@ -19,6 +17,8 @@
     "lib"
   ],
   "keywords": [
+    "cli-app",
+    "cli",
     "yeoman",
     "yo",
     "doctor",
@@ -32,7 +32,7 @@
     "each-async": "^1.1.1",
     "log-symbols": "^1.0.1",
     "object-values": "^1.0.0",
-    "twig": "^0.7.2",
+    "twig": "^0.8.2",
     "user-home": "^1.1.0"
   },
   "devDependencies": {
