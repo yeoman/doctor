@@ -6,7 +6,9 @@
   "license": "BSD-2-Clause",
   "author": "Yeoman",
   "repository": "yeoman/doctor",
-  "bin": "lib/cli.js",
+  "bin": {
+    "yodoctor": "lib/cli.js"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
