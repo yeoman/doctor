@@ -5,6 +5,8 @@ Upgrade to the latest version by running:
 {{ 'npm install -g npm' | magenta }}
 {% if isWin %}
 
+For upgrading npm on Windows, we recommend to use the {{ 'npm-windows-upgrade' | magenta }} tool:
+{{ 'https://github.com/felixrieseberg/npm-windows-upgrade' | blue | underline }}
 See this guide if you're having trouble upgrading:
 {{ 'https://github.com/npm/npm/wiki/Troubleshooting#upgrading-on-windows' | blue | underline }}
 {% endif %}
