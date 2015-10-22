@@ -35,9 +35,9 @@
     "each-async": "^1.1.1",
     "log-symbols": "^1.0.1",
     "object-values": "^1.0.0",
-    "semver": "^4.3.6",
+    "semver": "^5.0.3",
     "twig": "^0.8.2",
-    "user-home": "^1.1.0"
+    "user-home": "^2.0.0"
   },
   "devDependencies": {
     "jshint": "^2.5.6",
