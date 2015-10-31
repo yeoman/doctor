@@ -1,11 +1,11 @@
 {
   "name": "yeoman-doctor",
   "version": "1.4.0",
-  "main": "lib/index.js",
   "description": "Detect potential issues with users system that could prevent Yeoman from working correctly",
   "license": "BSD-2-Clause",
   "author": "Yeoman",
   "repository": "yeoman/doctor",
+  "main": "lib/index.js",
   "bin": {
     "yodoctor": "lib/cli.js"
   },
@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "jshint **/*.js && mocha test/** -R spec"
+    "test": "xo && mocha test/** -R spec"
   },
   "files": [
     "lib"
@@ -40,8 +40,15 @@
     "user-home": "^2.0.0"
   },
   "devDependencies": {
-    "jshint": "^2.5.6",
     "mocha": "^2.0.1",
-    "sinon": "^1.12.1"
+    "sinon": "^1.12.1",
+    "xo": "*"
+  },
+  "xo": {
+    "space": true,
+    "envs": [
+      "node",
+      "mocha"
+    ]
   }
 }

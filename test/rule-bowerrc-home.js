@@ -27,7 +27,7 @@ describe('global .bowerrc rule', function () {
     var mock = this.sandbox.mock(fs);
     mock.expects('exists').once().withArgs(rule.bowerrcPath).yields(true);
 
-    rule.verify(function(error) {
+    rule.verify(function (error) {
       assert.equal(error, rule.errors.fileExists());
       mock.verify();
       done();
