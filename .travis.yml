@@ -7,3 +7,5 @@ node_js:
 before_script:
   - npm link
   - yodoctor
+before_install:
+  - npm install -g yo@latest
