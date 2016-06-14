@@ -1,6 +1,5 @@
 'use strict';
 var assert = require('assert');
-var rule = require('../lib/rules/yo-version');
 var proxyquire = require('proxyquire');
 
 describe('yo version', function () {
