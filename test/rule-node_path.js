@@ -1,8 +1,9 @@
+/* eslint-disable unicorn/filename-case */
 'use strict';
 var assert = require('assert');
 var path = require('path');
-var sinon = require('sinon');
 var childProcess = require('child_process');
+var sinon = require('sinon');
 var rule = require('../lib/rules/node_path');
 
 describe('NODE_PATH rule', function () {
