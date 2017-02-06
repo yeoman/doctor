@@ -1,6 +1,7 @@
 'use strict';
 var assert = require('assert');
 var rule = require('../lib/rules/node-version');
+
 var _processVersion;
 
 before(function () {
