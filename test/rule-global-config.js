@@ -1,10 +1,9 @@
-/* eslint-disable unicorn/filename-case */
 'use strict';
 var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
 var sinon = require('sinon');
-var rule = require('../lib/rules/global_config');
+var rule = require('../lib/rules/global-config');
 
 // Setting the message paths & files before fs is stubbed
 var messageSyntaxPath = path.join(__dirname, '../lib/messages', 'global-config-syntax.twig');
