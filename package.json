@@ -30,18 +30,18 @@
     "check"
   ],
   "dependencies": {
-    "bin-version-check": "^2.1.0",
+    "bin-version-check": "^3.0.0",
     "chalk": "^1.0.0",
     "each-async": "^1.1.1",
     "log-symbols": "^1.0.1",
     "latest-version": "^2.0.0",
     "object-values": "^1.0.0",
     "semver": "^5.0.3",
-    "twig": "^0.8.2",
+    "twig": "^0.10.3",
     "user-home": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.0.1",
+    "mocha": "^3.2.0",
     "proxyquire": "^1.7.9",
     "sinon": "^1.12.1",
     "xo": "*"
