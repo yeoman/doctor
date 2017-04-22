@@ -1,5 +1,7 @@
 # Yeoman Doctor [![Build Status](https://travis-ci.org/yeoman/doctor.svg?branch=master)](https://travis-ci.org/yeoman/doctor)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yeoman/doctor.svg)](https://greenkeeper.io/)
+
 > Detect potential issues with users system that could prevent Yeoman from working correctly
 
 ![](screenshot.png)
