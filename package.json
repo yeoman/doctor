@@ -1,56 +1,56 @@
 {
-  "name": "yeoman-doctor",
-  "version": "2.1.0",
-  "description": "Detect potential issues with users system that could prevent Yeoman from working correctly",
-  "license": "BSD-2-Clause",
-  "author": "Yeoman",
-  "repository": "yeoman/doctor",
-  "main": "lib/index.js",
-  "bin": {
-    "yodoctor": "lib/cli.js"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "xo && mocha test/** -R spec"
-  },
-  "files": [
-    "lib"
-  ],
-  "keywords": [
-    "cli-app",
-    "cli",
-    "yeoman",
-    "yo",
-    "doctor",
-    "system",
-    "health",
-    "report",
-    "check"
-  ],
-  "dependencies": {
-    "bin-version-check": "^3.0.0",
-    "chalk": "^1.0.0",
-    "each-async": "^1.1.1",
-    "log-symbols": "^1.0.1",
-    "latest-version": "^2.0.0",
-    "object-values": "^1.0.0",
-    "semver": "^5.0.3",
-    "twig": "^0.10.3",
-    "user-home": "^2.0.0"
-  },
-  "devDependencies": {
-    "mocha": "^3.2.0",
-    "proxyquire": "^1.7.9",
-    "sinon": "^1.12.1",
-    "xo": "*"
-  },
-  "xo": {
-    "space": true,
-    "envs": [
-      "node",
-      "mocha"
-    ]
-  }
+	"name": "yeoman-doctor",
+	"version": "2.1.0",
+	"description": "Detect potential issues with users system that could prevent Yeoman from working correctly",
+	"license": "BSD-2-Clause",
+	"author": "Yeoman",
+	"repository": "yeoman/doctor",
+	"main": "lib/index.js",
+	"bin": {
+		"yodoctor": "lib/cli.js"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && mocha test/** -R spec"
+	},
+	"files": [
+		"lib"
+	],
+	"keywords": [
+		"cli-app",
+		"cli",
+		"yeoman",
+		"yo",
+		"doctor",
+		"system",
+		"health",
+		"report",
+		"check"
+	],
+	"dependencies": {
+		"bin-version-check": "^3.0.0",
+		"chalk": "^1.0.0",
+		"each-async": "^1.1.1",
+		"log-symbols": "^1.0.1",
+		"latest-version": "^2.0.0",
+		"object-values": "^1.0.0",
+		"semver": "^5.0.3",
+		"twig": "^0.10.3",
+		"user-home": "^2.0.0"
+	},
+	"devDependencies": {
+		"mocha": "^3.2.0",
+		"proxyquire": "^1.7.9",
+		"sinon": "^1.12.1",
+		"xo": "*"
+	},
+	"xo": {
+		"space": true,
+		"envs": [
+			"node",
+			"mocha"
+		]
+	}
 }

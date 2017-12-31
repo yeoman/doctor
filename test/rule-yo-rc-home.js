@@ -1,10 +1,10 @@
 'use strict';
-var fs = require('fs');
-var assert = require('assert');
-var sinon = require('sinon');
-var rule = require('../lib/rules/yo-rc-home');
+const fs = require('fs');
+const assert = require('assert');
+const sinon = require('sinon');
+const rule = require('../lib/rules/yo-rc-home');
 
-describe('global .yo-rc.json rule', function () {
+describe('global .yo-rc.json rule', () => {
   beforeEach(function () {
     this.sandbox = sinon.sandbox.create();
   });
@@ -14,9 +14,9 @@ describe('global .yo-rc.json rule', function () {
   });
 
   it('pass if there is no .yo-rc.json file in user home', function (done) {
-    var mock = this.sandbox.mock(fs);
+    const mock = this.sandbox.mock(fs);
     mock.expects('exists').once().withArgs(rule.yorcPath).yields(false);
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert(!error);
       mock.verify();
       done();
@@ -24,9 +24,9 @@ describe('global .yo-rc.json rule', function () {
   });
 
   it('fail if there is a .yo-rc.json file in user home', function (done) {
-    var mock = this.sandbox.mock(fs);
+    const mock = this.sandbox.mock(fs);
     mock.expects('exists').once().withArgs(rule.yorcPath).yields(true);
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert.equal(error, rule.errors.fileExists());
       mock.verify();
       done();

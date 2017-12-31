@@ -1,11 +1,11 @@
 'use strict';
-var assert = require('assert');
-var path = require('path');
-var childProcess = require('child_process');
-var sinon = require('sinon');
-var rule = require('../lib/rules/node-path');
+const assert = require('assert');
+const path = require('path');
+const childProcess = require('child_process');
+const sinon = require('sinon');
+const rule = require('../lib/rules/node-path');
 
-describe('NODE_PATH rule', function () {
+describe('NODE_PATH rule', () => {
   beforeEach(function () {
     this.sandbox = sinon.sandbox.create();
     this.beforePath = process.env.NODE_PATH;
@@ -20,15 +20,15 @@ describe('NODE_PATH rule', function () {
     this.sandbox.stub(childProcess, 'exec').yields(null, '  node-fake-path/foo\n');
 
     process.env.NODE_PATH = 'node-fake-path/foo';
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert(!error);
       done();
     });
   });
 
-  it('pass if NODE_PATH is undefined', function (done) {
+  it('pass if NODE_PATH is undefined', done => {
     delete process.env.NODE_PATH;
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert(!error);
       done();
     });
@@ -38,7 +38,7 @@ describe('NODE_PATH rule', function () {
     process.env.NODE_PATH = 'some-path';
     this.sandbox.stub(childProcess, 'exec').yields(new Error());
 
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert.equal(error, rule.errors.npmFailure());
       done();
     });
@@ -49,7 +49,7 @@ describe('NODE_PATH rule', function () {
 
     process.env.NODE_PATH = 'node-fake-path/bar';
 
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert.equal(error, rule.errors.pathMismatch(path.resolve('node-fake-path/foo')));
       done();
     });

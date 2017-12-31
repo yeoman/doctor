@@ -1,10 +1,10 @@
 'use strict';
-var fs = require('fs');
-var assert = require('assert');
-var sinon = require('sinon');
-var rule = require('../lib/rules/bowerrc-home');
+const fs = require('fs');
+const assert = require('assert');
+const sinon = require('sinon');
+const rule = require('../lib/rules/bowerrc-home');
 
-describe('global .bowerrc rule', function () {
+describe('global .bowerrc rule', () => {
   beforeEach(function () {
     this.sandbox = sinon.sandbox.create();
   });
@@ -14,9 +14,9 @@ describe('global .bowerrc rule', function () {
   });
 
   it('pass if there is no .bowerrc file in user home', function (done) {
-    var mock = this.sandbox.mock(fs);
+    const mock = this.sandbox.mock(fs);
     mock.expects('exists').once().withArgs(rule.bowerrcPath).yields(false);
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert(!error);
       mock.verify();
       done();
@@ -24,10 +24,10 @@ describe('global .bowerrc rule', function () {
   });
 
   it('fail if there is a .bowerrc file in user home', function (done) {
-    var mock = this.sandbox.mock(fs);
+    const mock = this.sandbox.mock(fs);
     mock.expects('exists').once().withArgs(rule.bowerrcPath).yields(true);
 
-    rule.verify(function (error) {
+    rule.verify(error => {
       assert.equal(error, rule.errors.fileExists());
       mock.verify();
       done();

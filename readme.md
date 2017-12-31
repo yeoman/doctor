@@ -7,7 +7,7 @@
 
 ## Usage
 
-Use as part of [yo](https://github.com/yeoman/yo):
+Use as part of [`yo`](https://github.com/yeoman/yo):
 
 ```
 $ yo doctor
