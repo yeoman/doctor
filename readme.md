@@ -18,4 +18,4 @@ Can also be run with `yodoctor` if installed globally.
 
 ## License
 
-[BSD license](http://opensource.org/licenses/bsd-license.php) and copyright Google.
+BSD-2-Clause © Google
