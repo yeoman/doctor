@@ -1,6 +1,6 @@
 {
 	"name": "yeoman-doctor",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "Detect potential issues with users system that could prevent Yeoman from working correctly",
 	"license": "BSD-2-Clause",
 	"author": "Yeoman",
