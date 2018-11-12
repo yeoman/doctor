@@ -34,6 +34,7 @@
 		"bin-version-check": "^3.0.0",
 		"chalk": "^2.3.0",
 		"each-async": "^1.1.1",
+		"global-tunnel-ng": "^2.5.3",
 		"latest-version": "^3.1.0",
 		"log-symbols": "^2.1.0",
 		"object-values": "^1.0.0",
