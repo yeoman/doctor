@@ -13,23 +13,19 @@ describe('global .yo-rc.json rule', () => {
     this.sandbox.restore();
   });
 
-  it('pass if there is no .yo-rc.json file in user home', function (done) {
+  it('pass if there is no .yo-rc.json file in user home', async function () {
     const mock = this.sandbox.mock(fs);
-    mock.expects('exists').once().withArgs(rule.yorcPath).yields(false);
-    rule.verify(error => {
-      assert(!error);
-      mock.verify();
-      done();
-    });
+    mock.expects('existsSync').once().withArgs(rule.yorcPath).returns(false);
+    const error = await rule.verify();
+    assert(!error);
+    mock.verify();
   });
 
-  it('fail if there is a .yo-rc.json file in user home', function (done) {
+  it('fail if there is a .yo-rc.json file in user home', async function () {
     const mock = this.sandbox.mock(fs);
-    mock.expects('exists').once().withArgs(rule.yorcPath).yields(true);
-    rule.verify(error => {
-      assert.equal(error, rule.errors.fileExists());
-      mock.verify();
-      done();
-    });
+    mock.expects('existsSync').once().withArgs(rule.yorcPath).returns(true);
+    const error = await rule.verify();
+    assert.equal(error, rule.errors.fileExists());
+    mock.verify();
   });
 });

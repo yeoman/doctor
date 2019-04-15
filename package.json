@@ -10,7 +10,7 @@
 		"yodoctor": "lib/cli.js"
 	},
 	"engines": {
-		"node": ">=4"
+		"node": ">=6"
 	},
 	"scripts": {
 		"test": "xo && mocha test/** -R spec"

@@ -16,42 +16,30 @@ describe('NODE_PATH rule', () => {
     process.env.NODE_PATH = this.beforePath;
   });
 
-  it('pass if npm root is contained in NODE_PATH', function (done) {
-    this.sandbox.stub(childProcess, 'exec').yields(null, '  node-fake-path/foo\n');
-
+  it('pass if npm root is contained in NODE_PATH', async function () {
+    this.sandbox.stub(childProcess, 'execSync').returns('node-fake-path/foo\n');
     process.env.NODE_PATH = 'node-fake-path/foo';
-    rule.verify(error => {
-      assert(!error);
-      done();
-    });
+    const error = await rule.verify();
+    assert(!error);
   });
 
-  it('pass if NODE_PATH is undefined', done => {
+  it('pass if NODE_PATH is undefined', async () => {
     delete process.env.NODE_PATH;
-    rule.verify(error => {
-      assert(!error);
-      done();
-    });
+    const error = await rule.verify();
+    assert(!error);
   });
 
-  it('fail if the npm call throw', function (done) {
+  it('fail if the npm call throw', async function () {
+    this.sandbox.stub(childProcess, 'execSync').returns(new Error());
     process.env.NODE_PATH = 'some-path';
-    this.sandbox.stub(childProcess, 'exec').yields(new Error());
-
-    rule.verify(error => {
-      assert.equal(error, rule.errors.npmFailure());
-      done();
-    });
+    const error = await rule.verify();
+    assert.equal(error, rule.errors.npmFailure());
   });
 
-  it('fail if the paths mismatch', function (done) {
-    this.sandbox.stub(childProcess, 'exec').yields(null, 'node-fake-path/foo');
-
+  it('fail if the paths mismatch', async function () {
+    this.sandbox.stub(childProcess, 'execSync').returns('node-fake-path/foo');
     process.env.NODE_PATH = 'node-fake-path/bar';
-
-    rule.verify(error => {
-      assert.equal(error, rule.errors.pathMismatch(path.resolve('node-fake-path/foo')));
-      done();
-    });
+    const error = await rule.verify();
+    assert.equal(error, rule.errors.pathMismatch(path.resolve('node-fake-path/foo')));
   });
 });
