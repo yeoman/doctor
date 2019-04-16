@@ -36,7 +36,6 @@
 		"global-tunnel-ng": "^2.5.3",
 		"latest-version": "^3.1.0",
 		"log-symbols": "^2.1.0",
-		"object-values": "^1.0.0",
 		"semver": "^5.0.3",
 		"twig": "^1.10.5",
 		"user-home": "^2.0.0"
