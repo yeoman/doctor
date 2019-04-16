@@ -13,24 +13,19 @@ describe('global .bowerrc rule', () => {
     this.sandbox.restore();
   });
 
-  it('pass if there is no .bowerrc file in user home', function (done) {
+  it('pass if there is no .bowerrc file in user home', async function () {
     const mock = this.sandbox.mock(fs);
-    mock.expects('exists').once().withArgs(rule.bowerrcPath).yields(false);
-    rule.verify(error => {
-      assert(!error);
-      mock.verify();
-      done();
-    });
+    mock.expects('existsSync').once().withArgs(rule.bowerrcPath).returns(false);
+    const error = await rule.verify();
+    assert(!error);
+    mock.verify();
   });
 
-  it('fail if there is a .bowerrc file in user home', function (done) {
+  it('fail if there is a .bowerrc file in user home', async function () {
     const mock = this.sandbox.mock(fs);
-    mock.expects('exists').once().withArgs(rule.bowerrcPath).yields(true);
-
-    rule.verify(error => {
-      assert.equal(error, rule.errors.fileExists());
-      mock.verify();
-      done();
-    });
+    mock.expects('existsSync').once().withArgs(rule.bowerrcPath).returns(true);
+    const error = await rule.verify();
+    assert.equal(error, rule.errors.fileExists());
+    mock.verify();
   });
 });

@@ -3,7 +3,7 @@ const assert = require('assert');
 const proxyquire = require('proxyquire');
 
 describe('yo version', () => {
-  const latestVersion = {
+  let latestVersion = {
     catch() {
       return latestVersion;
     }
@@ -14,25 +14,17 @@ describe('yo version', () => {
     }
   });
 
-  it('pass if it\'s new enough', cb => {
-    latestVersion.then = callback => {
-      callback('1.8.4');
-    };
+  it('pass if it\'s new enough', async () => {
+    latestVersion = {...latestVersion, then: cb => cb('1.8.4')};
 
-    rule.verify(err => {
-      assert(!err, err);
-      cb();
-    });
+    const error = await rule.verify();
+    assert(!error, error);
   });
 
-  it('fail if it\'s too old', cb => {
-    latestVersion.then = callback => {
-      callback('999.999.999');
-    };
+  it('fail if it\'s too old', async () => {
+    latestVersion = {...latestVersion, then: cb => cb('999.999.999')};
 
-    rule.verify(err => {
-      assert(err, err);
-      cb();
-    });
+    const error = await rule.verify();
+    assert(error, error);
   });
 });

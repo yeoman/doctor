@@ -20,48 +20,40 @@ describe('global config rule', () => {
     this.sandbox.restore();
   });
 
-  it('pass if there is no global config', function (done) {
+  it('pass if there is no global config', async function () {
     this.sandbox.stub(fs, 'existsSync').returns(false);
-    rule.verify(error => {
-      assert(!error);
-      done();
-    });
+    const error = await rule.verify();
+    assert(!error);
   });
 
-  it('pass if the config content is valid JSON', function (done) {
+  it('pass if the config content is valid JSON', async function () {
     this.sandbox.stub(fs, 'existsSync').returns(true);
     this.sandbox.stub(fs, 'readFileSync').returns('{ "foo": 1 }');
-    rule.verify(error => {
-      assert(!error);
-      done();
-    });
+    const error = await rule.verify();
+    assert(!error);
   });
 
-  it('fails if JSON is invalid', function (done) {
+  it('fails if JSON is invalid', async function () {
     this.sandbox.stub(fs, 'existsSync').withArgs(rule.configPath).returns(true);
 
     const fsStub = this.sandbox.stub(fs, 'readFileSync');
     fsStub.withArgs(rule.configPath).returns('@#');
     fsStub.withArgs(messageSyntaxPath).returns(messageSyntaxFile);
 
-    rule.verify(error => {
-      // Assert(error instanceof SyntaxError);
-      assert(error.includes('Unexpected token @'));
-      // Assert.equal(error, rule.errors.syntax(new SyntaxError('Unexpected token @'), rule.configPath));
-      done();
-    });
+    const error = await rule.verify();
+    // Assert(error instanceof SyntaxError);
+    assert(error.includes('Unexpected token @'));
+    // Assert.equal(error, rule.errors.syntax(new SyntaxError('Unexpected token @'), rule.configPath));
   });
 
-  it('fails if file is unreadable', function (done) {
+  it('fails if file is unreadable', async function () {
     this.sandbox.stub(fs, 'existsSync').withArgs(rule.configPath).returns(true);
 
     const fsStub = this.sandbox.stub(fs, 'readFileSync');
     fsStub.withArgs(rule.configPath).throws(new Error('nope'));
     fsStub.withArgs(messageMiscPath).returns(messageMiscFile);
 
-    rule.verify(error => {
-      assert.equal(error, rule.errors.misc(rule.configPath));
-      done();
-    });
+    const error = await rule.verify();
+    assert.equal(error, rule.errors.misc(rule.configPath));
   });
 });

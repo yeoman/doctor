@@ -14,21 +14,17 @@ after(() => {
 });
 
 describe('Node.js version', () => {
-  it('pass if it\'s new enough', cb => {
+  it('pass if it\'s new enough', async () => {
     process.version = 'v100.0.0';
 
-    rule.verify(err => {
-      assert(!err, err);
-      cb();
-    });
+    const error = await rule.verify();
+    assert(!error, error);
   });
 
-  it('fail if it\'s too old', cb => {
+  it('fail if it\'s too old', async () => {
     process.version = 'v0.10.0';
 
-    rule.verify(err => {
-      assert(err, err);
-      cb();
-    });
+    const error = await rule.verify();
+    assert(error, error);
   });
 });

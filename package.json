@@ -10,7 +10,7 @@
 		"yodoctor": "lib/cli.js"
 	},
 	"engines": {
-		"node": ">=4"
+		"node": ">=8"
 	},
 	"scripts": {
 		"test": "xo && mocha test/** -R spec"
@@ -33,11 +33,9 @@
 		"ansi-styles": "^3.2.0",
 		"bin-version-check": "^3.0.0",
 		"chalk": "^2.3.0",
-		"each-async": "^1.1.1",
 		"global-tunnel-ng": "^2.5.3",
 		"latest-version": "^3.1.0",
 		"log-symbols": "^2.1.0",
-		"object-values": "^1.0.0",
 		"semver": "^5.0.3",
 		"twig": "^1.10.5",
 		"user-home": "^2.0.0"
