@@ -7,7 +7,7 @@
 	"repository": "yeoman/doctor",
 	"main": "lib/index.js",
 	"bin": {
-		"yo-doctor": "lib/cli.js"
+		"yodoctor": "lib/cli.js"
 	},
 	"engines": {
 		"node": ">=8"
