@@ -4,6 +4,6 @@ node_js:
   - 8
 before_script:
   - npm link
-  - yodoctor
+  - yo-doctor
 before_install:
   - npm install -g yo@latest
