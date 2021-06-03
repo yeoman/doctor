@@ -32,7 +32,7 @@
 	],
 	"dependencies": {
 		"ansi-styles": "^3.2.0",
-		"bin-version-check": "^3.0.0",
+		"bin-version-check": "^4.0.0",
 		"chalk": "^2.3.0",
 		"global-agent": "^2.0.0",
 		"global-tunnel-ng": "^2.5.3",

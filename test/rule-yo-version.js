@@ -27,4 +27,11 @@ describe('yo version', () => {
     const error = await rule.verify();
     assert(error, error);
   });
+
+  it('fail if it\'s invalid version range', async () => {
+    latestVersion = {...latestVersion, then: cb => cb('-1')};
+
+    const error = await rule.verify();
+    assert(error, error);
+  });
 });
