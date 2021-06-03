@@ -11,7 +11,7 @@
 		"yo-doctor": "lib/cli.js"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=12"
 	},
 	"scripts": {
 		"test": "xo && mocha test/** -R spec"
