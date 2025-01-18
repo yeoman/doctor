@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      # TODO: Include Node@22 and Node@23 when https://github.com/yeoman/yo/issues/842 is resolved
+      # TODO: Include Node@19, Node@20, Node@21 when https://github.com/yeoman/doctor/issues/67 is resolved
+      # TODO: Include windows-latest when https://github.com/yeoman/doctor/issues/69 is resolved
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [12, 13, 14, 15, 16, 17, 18]
+        # Avoid Error: Unable to find Node versions for platform darwin and architecture arm64: 
+        exclude:
+          - os: macos-latest
+            node: 12
+          - os: macos-latest
+            node: 13
+          - os: macos-latest
+            node: 14
+          - os: macos-latest
+            node: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install YO
+        run: npm install -g yo
+
+      - name: Run tests
+        run: npm test
