@@ -1,4 +1,4 @@
-# Yeoman Doctor [![Build Status](https://travis-ci.org/yeoman/doctor.svg?branch=master)](https://travis-ci.org/yeoman/doctor)
+# Yeoman Doctor [![CI](https://github.com/yeoman/doctor/actions/workflows/ci.yml/badge.svg)](https://github.com/yeoman/doctor/actions/workflows/ci.yml)
 
 > Detect potential issues with users system that could prevent Yeoman from working correctly
 
