@@ -11,7 +11,7 @@
 		"yo-doctor": "lib/cli.js"
 	},
 	"engines": {
-		"node": ">=12.10.0"
+		"node": ">=18.20.0"
 	},
 	"scripts": {
 		"test": "xo && mocha test/** -R spec"
@@ -31,20 +31,20 @@
 		"check"
 	],
 	"dependencies": {
-		"ansi-styles": "^3.2.0",
-		"bin-version-check": "^4.0.0",
-		"chalk": "^2.3.0",
-		"global-agent": "^2.0.0",
-		"latest-version": "^3.1.0",
-		"log-symbols": "^2.1.0",
-		"semver": "^5.0.3",
-		"twig": "^1.10.5"
+		"ansi-styles": "^6.2.1",
+		"bin-version-check": "^6.0.0",
+		"chalk": "^5.4.1",
+		"global-agent": "^3.0.0",
+		"latest-version": "^9.0.0",
+		"log-symbols": "^7.0.0",
+		"semver": "^7.7.1",
+		"twig": "^1.17.1"
 	},
 	"devDependencies": {
-		"mocha": "^4.1.0",
-		"proxyquire": "^1.7.9",
-		"sinon": "^4.1.3",
-		"xo": "^0.24.0"
+		"mocha": "^11.1.0",
+		"proxyquire": "^2.1.3",
+		"sinon": "^19.0.4",
+		"xo": "^0.60.0"
 	},
 	"xo": {
 		"space": true,
