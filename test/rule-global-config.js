@@ -3,7 +3,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const sinon = require('sinon');
-const rule = require('../lib/rules/global-config');
+const rule = require('../lib/rules/global-config.js');
 
 // Setting the message paths & files before fs is stubbed
 const messageSyntaxPath = path.join(__dirname, '../lib/messages', 'global-config-syntax.twig');

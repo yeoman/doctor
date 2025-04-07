@@ -2,7 +2,7 @@
 const fs = require('fs');
 const assert = require('assert');
 const sinon = require('sinon');
-const rule = require('../lib/rules/yo-rc-home');
+const rule = require('../lib/rules/yo-rc-home.js');
 
 describe('global .yo-rc.json rule', () => {
   beforeEach(function () {

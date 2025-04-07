@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('assert');
-const rule = require('../lib/rules/npm-version');
+const rule = require('../lib/rules/npm-version.js');
 
 describe('npm version', () => {
   it('pass if it\'s new enough', async () => {

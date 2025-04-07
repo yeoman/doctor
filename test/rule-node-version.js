@@ -1,6 +1,7 @@
 'use strict';
 const assert = require('assert');
-const rule = require('../lib/rules/node-version');
+const process = require('process');
+const rule = require('../lib/rules/node-version.js');
 
 let _processVersion;
 
