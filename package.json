@@ -14,7 +14,8 @@
 		"node": ">=12.10.0"
 	},
 	"scripts": {
-		"test": "xo && mocha test/** -R spec"
+    "lint": "xo",
+		"test": "mocha test/** -R spec"
 	},
 	"files": [
 		"lib"
