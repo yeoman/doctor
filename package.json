@@ -14,7 +14,8 @@
 		"node": ">=18.20.0"
 	},
 	"scripts": {
-		"test": "xo && mocha test/** -R spec"
+    "lint": "xo",
+		"test": "mocha test/** -R spec"
 	},
 	"files": [
 		"lib"
@@ -53,7 +54,9 @@
 			"mocha"
 		],
 		"rules": {
-			"node/no-deprecated-api": "off"
+			"node/no-deprecated-api": "off",
+			"unicorn/prefer-module": "off",
+			"unicorn/prefer-node-protocol": "off"
 		}
 	}
 }

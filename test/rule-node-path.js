@@ -2,8 +2,9 @@
 const assert = require('assert');
 const path = require('path');
 const childProcess = require('child_process');
+const process = require('process');
 const sinon = require('sinon');
-const rule = require('../lib/rules/node-path');
+const rule = require('../lib/rules/node-path.js');
 
 describe('NODE_PATH rule', () => {
   beforeEach(function () {
@@ -30,7 +31,7 @@ describe('NODE_PATH rule', () => {
   });
 
   it('fail if the npm call throw', async function () {
-    this.sandbox.stub(childProcess, 'execSync').returns(new Error());
+    this.sandbox.stub(childProcess, 'execSync').returns(new Error('Child Process failure'));
     process.env.NODE_PATH = 'some-path';
     const error = await rule.verify();
     assert.equal(error, rule.errors.npmFailure());
