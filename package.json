@@ -58,5 +58,6 @@
 			"unicorn/prefer-module": "off",
 			"unicorn/prefer-node-protocol": "off"
 		}
-	}
+	},
+  "type": "module"
 }
