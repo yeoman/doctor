@@ -2,7 +2,7 @@
 const fs = require('fs');
 const assert = require('assert');
 const sinon = require('sinon');
-const rule = require('../lib/rules/bowerrc-home');
+const rule = require('../lib/rules/bowerrc-home.js');
 
 describe('global .bowerrc rule', () => {
   beforeEach(function () {
