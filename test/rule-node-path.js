@@ -1,14 +1,13 @@
-'use strict';
-const assert = require('assert');
-const path = require('path');
-const childProcess = require('child_process');
-const process = require('process');
-const sinon = require('sinon');
-const rule = require('../lib/rules/node-path.js');
+import assert from 'node:assert';
+import path from 'node:path';
+import childProcess from 'node:child_process';
+import process from 'node:process';
+import sinon from 'sinon';
+import rule from '../lib/rules/node-path.js';
 
 describe('NODE_PATH rule', () => {
   beforeEach(function () {
-    this.sandbox = sinon.sandbox.create();
+    this.sandbox = sinon.createSandbox();
     this.beforePath = process.env.NODE_PATH;
   });
 
@@ -21,13 +20,13 @@ describe('NODE_PATH rule', () => {
     this.sandbox.stub(childProcess, 'execSync').returns('node-fake-path/foo\n');
     process.env.NODE_PATH = 'node-fake-path/foo';
     const error = await rule.verify();
-    assert(!error);
+    assert.ok(!error);
   });
 
   it('pass if NODE_PATH is undefined', async () => {
     delete process.env.NODE_PATH;
     const error = await rule.verify();
-    assert(!error);
+    assert.ok(!error);
   });
 
   it('fail if the npm call throw', async function () {
