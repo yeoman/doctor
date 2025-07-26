@@ -1,12 +1,11 @@
-'use strict';
-const fs = require('fs');
-const assert = require('assert');
-const sinon = require('sinon');
-const rule = require('../lib/rules/yo-rc-home.js');
+import fs from 'node:fs';
+import assert from 'node:assert';
+import sinon from 'sinon';
+import rule from '../lib/rules/yo-rc-home.js';
 
 describe('global .yo-rc.json rule', () => {
   beforeEach(function () {
-    this.sandbox = sinon.sandbox.create();
+    this.sandbox = sinon.createSandbox();
   });
 
   afterEach(function () {
@@ -17,7 +16,7 @@ describe('global .yo-rc.json rule', () => {
     const mock = this.sandbox.mock(fs);
     mock.expects('existsSync').once().withArgs(rule.yorcPath).returns(false);
     const error = await rule.verify();
-    assert(!error);
+    assert.ok(!error);
     mock.verify();
   });
 

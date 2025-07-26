@@ -4,7 +4,6 @@
 
 ![](screenshot.png)
 
-
 ## Usage
 
 Use as part of [`yo`](https://github.com/yeoman/yo):
@@ -14,7 +13,6 @@ $ yo doctor
 ```
 
 Can also be run with `yo-doctor` if installed globally.
-
 
 ## License
 
