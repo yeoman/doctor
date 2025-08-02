@@ -1,7 +1,6 @@
-'use strict';
-const assert = require('assert');
-const process = require('process');
-const rule = require('../lib/rules/node-version.js');
+import assert from 'node:assert';
+import process from 'process';
+import rule from '../lib/rules/node-version.js';
 
 let _processVersion;
 
@@ -19,13 +18,13 @@ describe('Node.js version', () => {
     process.version = 'v100.0.0';
 
     const error = await rule.verify();
-    assert(!error, error);
+    assert.ok(!error, error);
   });
 
   it('fail if it\'s too old', async () => {
     process.version = 'v0.10.0';
 
     const error = await rule.verify();
-    assert(error, error);
+    assert.ok(error, error);
   });
 });
