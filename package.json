@@ -16,7 +16,7 @@
   },
   "scripts": {
     "lint": "xo",
-    "test": "esmocha test/** -R spec"
+    "test": "esmocha test/** -R spec --parallel"
   },
   "files": [
     "lib"
