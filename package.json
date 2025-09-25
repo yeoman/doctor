@@ -16,7 +16,7 @@
   },
   "scripts": {
     "lint": "xo",
-    "test": "mocha test/** -R spec"
+    "test": "esmocha test/** -R spec"
   },
   "files": [
     "lib"
@@ -43,8 +43,8 @@
     "twig": "^1.17.1"
   },
   "devDependencies": {
+    "esmocha": "^4.0.0",
     "globals": "^16.3.0",
-    "mocha": "^11.7.1",
     "sinon": "^21.0.0",
     "xo": "^1.2.1"
   }
